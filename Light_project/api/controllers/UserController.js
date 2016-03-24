@@ -6,6 +6,8 @@
  */
 
 module.exports = {
-	
+	bonjour : function(req, res) {
+        return res.send('Bonjour');
+    }
 };
 
