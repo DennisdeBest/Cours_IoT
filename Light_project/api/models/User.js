@@ -9,13 +9,21 @@ module.exports = {
 
   attributes: {
     prenom: {
-      type:'String',
-      size:100,
+        type:'string',
+        size:100,
+        required:true
     },
     nom : {
-      type:'String'}
-  },
-  nom : {
-    type:'email'}
+        type:'string'
+    },
+      email : {
+            type:'email'
+      },
+      lights: {
+          collection:'light',
+          via:'owner'
+      }
+  }
+
 };
 
