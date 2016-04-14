@@ -22,7 +22,12 @@ module.exports = {
       lights: {
           collection:'light',
           via:'owner'
+      },
+      logs: {
+          collection:'log',
+          via:'user'
       }
+
   }
 
 };

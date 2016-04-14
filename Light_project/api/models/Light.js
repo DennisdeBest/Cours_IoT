@@ -13,8 +13,11 @@ module.exports = {
     },
     owner:{
       model:'user'
+    },
+    logs: {
+      collection:'log',
+      via:'light'
     }
-
   }
 };
 

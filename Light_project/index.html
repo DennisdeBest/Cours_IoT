@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script
+            src="https://code.jquery.com/jquery-2.2.3.min.js"
+            integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="
+            crossorigin="anonymous"></script>
+    <script type="text/javascript" src="http://localhost:1337/js/dependencies/sails.io.js"></script>
+    <script type="text/javascript">
+        io.sails.url = "http://localhost:1337";
+       /* io.socket.get('/user', function(body){
+            console.log('Current User : ', body);
+        });
+        io.socket.on('user', function(body){
+            console.log('Current User : ', body);
+        }); */
+        io.socket.get('/log', function(body){
+            console.log('Log ', body);
+        });
+        io.socket.on('log', function(body){
+            console.log('Log created ', body);
+            getData(body);
+
+        });
+        function getData(body){
+            $.get("http://localhost:1337/user/"+body.data.user, function(data){
+                var state = (body.data.state == true) ? "Allumé" : "Eteinte";
+                $("#content").append("<p>La lampe n"+body.data.id+" est "+state+"");
+                $("#content").append("Et c'est "+data.prenom+" qui l'a fait !");
+            });
+            $.get("http://localhost:13371/light/"+body.data.light, function(data){
+                $("#content").append("Dans "+data.room+" voila ");
+            });
+
+        }
+    </script>
+</head>
+<body>
+<div id="content">
+
+</div>
+</body>
+</html>
