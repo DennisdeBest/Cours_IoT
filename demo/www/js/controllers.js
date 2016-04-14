@@ -1,6 +1,7 @@
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+.controller('AppCtrl',['$scope', '$ionicModal', '$timeout',
+    function($scope, $ionicModal, $timeout) {
 
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
@@ -9,6 +10,25 @@ angular.module('starter.controllers', [])
   //$scope.$on('$ionicView.enter', function(e) {
   //});
 
+        $scope.links = [
+            {
+            title:'search',
+                url:"#/app/search"
+            },
+            {
+                title:'Browse',
+                url:"#/app/browse"
+            },
+            {
+                title:'Playlists',
+                url:"#/app/playlists"
+            }
+        ];
+        $scope.afficheLoginBool=true;
+
+        $scope.toggleLogin = function() {
+            $scope.afficheLoginBool = ($scope.afficheLoginBool !== true);
+        };
   // Form data for the login modal
   $scope.loginData = {};
 
@@ -39,7 +59,7 @@ angular.module('starter.controllers', [])
       $scope.closeLogin();
     }, 1000);
   };
-})
+}])
 
 .controller('PlaylistsCtrl', function($scope) {
   $scope.playlists = [

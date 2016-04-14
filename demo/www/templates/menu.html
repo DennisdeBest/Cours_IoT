@@ -15,23 +15,15 @@
   <ion-side-menu side="left">
     <ion-header-bar class="bar-stable">
       <h1 class="title">Left</h1>
+        <button ng-click="toggleLogin()">Show Login</button>
     </ion-header-bar>
     <ion-content>
       <ion-list>
-        <ion-item menu-close ng-click="login()">
+        <ion-item menu-close ng-click="login()" ng-show="afficheLoginBool">
           Login
         </ion-item>
-        <ion-item menu-close href="#/app/search">
-          Search
-        </ion-item>
-        <ion-item menu-close href="#/app/hello">
-          Hello
-        </ion-item>
-        <ion-item menu-close href="#/app/browse">
-          Browse
-        </ion-item>
-        <ion-item menu-close href="#/app/playlists">
-          Playlists
+        <ion-item menu-close ng-repeat="link in links" href="{{link.url}}">
+          {{link.title}}
         </ion-item>
       </ion-list>
     </ion-content>
