@@ -22,7 +22,7 @@
         <ion-item menu-close ng-click="login()" ng-show="afficheLoginBool">
           Login
         </ion-item>
-        <ion-item menu-close ng-repeat="link in links" href="{{link.url}}">
+        <ion-item menu-close ng-repeat="link in links" ui-sref="{{link.url}}">
           {{link.title}}
         </ion-item>
       </ion-list>
