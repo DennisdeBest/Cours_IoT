@@ -45,7 +45,14 @@ angular.module('starter.controllers.app', [])
             $scope.modal = modal;
         });
 
-        // Triggered in the login modal to close it
+        $ionicModal.fromTemplateUrl('templates/formPlaylist.html', {
+            scope: $scope
+        }).then(function(modal) {
+            $scope.modalPlaylist = modal;
+        });
+
+
+            // Triggered in the login modal to close it
         $scope.closeLogin = function() {
             $scope.modal.hide();
         };
@@ -54,6 +61,14 @@ angular.module('starter.controllers.app', [])
         $scope.login = function() {
             $scope.modal.show();
         };
+        $scope.showAddPlaylistForm = function() {
+            $scope.modalPlaylist.show();
+        };
+
+        $scope.closePlaylistForm= function() {
+            $scope.modalPlaylist.hide();
+        };
+
 
         // Perform the login action when the user submits the login form
         $scope.doLogin = function() {
@@ -61,6 +76,14 @@ angular.module('starter.controllers.app', [])
 
             // Simulate a login delay. Remove this and replace with your login
             // code if using a login system
+            $timeout(function() {
+                $scope.closeLogin();
+            }, 1000);
+        };
+
+        $scope.addPlaylist = function() {
+            console.log('Add playlist', $scope.loginData);
+
             $timeout(function() {
                 $scope.closeLogin();
             }, 1000);
