@@ -1,7 +1,7 @@
 angular.module('starter.controllers.app', [])
 
-    .controller('AppCtrl',['$scope', '$ionicModal', '$timeout', '$state',
-        function($scope, $ionicModal, $timeout, $state) {
+    .controller('AppCtrl',['$scope', '$ionicModal', '$timeout', '$state', 'PlaylistsSrv',
+        function($scope, $ionicModal, $timeout, $state, PlaylistsSrv) {
 
         // With the new view caching in Ionic, Controllers are only called
         // when they are recreated or on app start, instead of every page change.
@@ -69,7 +69,6 @@ angular.module('starter.controllers.app', [])
             $scope.modalPlaylist.hide();
         };
 
-
         // Perform the login action when the user submits the login form
         $scope.doLogin = function() {
             console.log('Doing login', $scope.loginData);
@@ -81,11 +80,14 @@ angular.module('starter.controllers.app', [])
             }, 1000);
         };
 
-        $scope.addPlaylist = function() {
-            console.log('Add playlist', $scope.loginData);
+            $scope.playlistData = {};
 
+        $scope.addPlaylist = function() {
+            console.log('Add playlist', $scope.playlistData.title);
+            PlaylistsSrv.addPlaylistElement($scope.playlistData);
+            $scope.playlistData = {};
             $timeout(function() {
                 $scope.closeLogin();
             }, 1000);
         };
-    }])
+    }]);

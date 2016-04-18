@@ -3,6 +3,9 @@
     <ion-list>
       <ion-item ng-repeat="playlist in playlists" href="#/app/playlists/{{playlist.id}}">
         {{playlist.title}}
+      <ion-option-button class="button-assertive" ng-click="deletePlaylist(playlist, playlist.id)">
+        Delete
+      </ion-option-button>
       </ion-item>
     </ion-list>
   </ion-content>
