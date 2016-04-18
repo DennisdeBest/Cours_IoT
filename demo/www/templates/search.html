@@ -1,5 +1,11 @@
 <ion-view view-title="Search">
   <ion-content>
     <h1>Search</h1>
+    <p>Last Name : {{name}}</p>
+    <p>First Name : {{firstname}}</p>
+
+    <a href="#/app/browse/test/testnom">To Browse</a>
+
+    <a ui-sref="app.browse({name:'test'})">To Browse with ui-sref</a>
   </ion-content>
 </ion-view>

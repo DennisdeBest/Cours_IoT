@@ -4,7 +4,13 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers'])
+angular.module('starter', ['ionic',
+    'starter.controllers.app',
+    'starter.controllers.browse',
+    'starter.controllers.search',
+    'starter.controllers.playlist',
+    'starter.controllers.playlists',
+    'starter.services.playlists'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -33,10 +39,11 @@ angular.module('starter', ['ionic', 'starter.controllers'])
   })
 
   .state('app.search', {
-    url: '/search',
+    url: '/search/:name/:firstname',
     views: {
       'menuContent': {
-        templateUrl: 'templates/search.html'
+        templateUrl: 'templates/search.html',
+        controller: 'SearchCtrl'
       }
     }
   })
@@ -50,11 +57,16 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       })
 
   .state('app.browse', {
-      url: '/browse',
+      url: '/browse/:name/:firstname',
       views: {
         'menuContent': {
-          templateUrl: 'templates/browse.html'
+          templateUrl: 'templates/browse.html',
+            controller: 'BrowseCtrl'
         }
+      },
+      params:{
+          name:'Doe',
+          firstname:'John'
       }
     })
     .state('app.playlists', {
