@@ -7,6 +7,11 @@
 
 module.exports = {
 	login : function(req, res) {
+        if (req.session.user) {
+            console.log(req.session.user);
+            return res.send(req.session.user);
+        }
+
         if(!req.param('email') || !req.param('password')){
             return res.send(false);
         }
@@ -22,7 +27,9 @@ module.exports = {
             if(!foundUser) return res.send(false);
 
             req.session.user = foundUser;
-            return res.send(true);
+            console.log(req.session.user);
+            req.session.save();
+            return res.send(foundUser);
         });
     }
 };

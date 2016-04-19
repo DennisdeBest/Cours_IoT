@@ -32,3 +32,12 @@ th {
     color: #c5c5c5 !important;
     border: 2px solid gray !important;
 }
+#flexContainer{
+    display: flex;
+    flex-flow: row;
+    justify-content: space-around;
+}
+#lights, #logs{
+    flex:1;
+    color: darkorange;
+}

@@ -11,6 +11,9 @@ module.exports = {
     room:{
       type:'string'
     },
+    state:{
+      type:'boolean',
+    },
     owner:{
       model:'user'
     },
