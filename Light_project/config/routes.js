@@ -47,6 +47,6 @@ module.exports.routes = {
   ***************************************************************************/
 
   //'get /bonjour': 'UserController.bonjour'
-
+  'post /login' : 'UserController.login'
 
 };

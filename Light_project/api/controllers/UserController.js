@@ -7,11 +7,11 @@
 
 module.exports = {
 	login : function(req, res) {
-        if(!req.params('email') || !req.params('password')){
+        if(!req.param('email') || !req.param('password')){
             return res.send(false);
         }
-        var email = req.params('email');
-        var pass = req.params('password');
+        var email = req.param('email');
+        var pass = req.param('password');
 
         User.findOne().where(
             {

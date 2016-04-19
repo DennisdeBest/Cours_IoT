@@ -5,9 +5,11 @@ body {
 
 table {
     width:400px !important;
-    margin: auto !important;
+    margin: 15px auto;
     border: 2px darkorange solid !important;
     background-color: #9e9e9e !important;
+    padding:10px !important;
+    border-collapse: separate !important;
 }
 
 th {
@@ -17,9 +19,16 @@ th {
     text-align: center !important;
 }
 .submitButton input{
-    background-color: #5D5D5D !important;
-    color: white !important;
-    border: 1px outset darkorange !important;
-    padding: 2px !important;
+    background-color: #5D5D5D ;
+    color: white;
+    border: 2px outset darkorange;
+    padding: 2px 15px;
+    margin: 3px;
+    text-align: center;
 }
 
+.loginDisabled {
+    background-color: #5D5D5D !important;
+    color: #c5c5c5 !important;
+    border: 2px solid gray !important;
+}
