@@ -8,16 +8,23 @@
 module.exports = {
 
   attributes: {
-    prenom: {
+    firstName: {
         type:'string',
         size:100,
         required:true
     },
-    nom : {
-        type:'string'
+    lastName : {
+        type:'string',
+        size:100,
+        required:true
     },
       email : {
             type:'email'
+      },
+      password: {
+          type: 'String',
+          size:10,
+          required : true
       },
       lights: {
           collection:'light',

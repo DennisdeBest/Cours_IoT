@@ -1,0 +1,25 @@
+body {
+    background-color: #5D5D5D !important;
+    font-family: 'Trebuchet', 'Trebuchet', 'Trebuchet' !important;
+}
+
+table {
+    width:400px !important;
+    margin: auto !important;
+    border: 2px darkorange solid !important;
+    background-color: #9e9e9e !important;
+}
+
+th {
+    text-align: right !important;
+}
+.submitButton {
+    text-align: center !important;
+}
+.submitButton input{
+    background-color: #5D5D5D !important;
+    color: white !important;
+    border: 1px outset darkorange !important;
+    padding: 2px !important;
+}
+

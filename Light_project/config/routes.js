@@ -46,7 +46,7 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  'get /bonjour': 'UserController.bonjour'
+  //'get /bonjour': 'UserController.bonjour'
 
 
 };
