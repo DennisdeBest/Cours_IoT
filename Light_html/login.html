@@ -28,18 +28,14 @@
 </form>
 
 <div id="flexContainer" style="display: none">
-    <div id="logs"><h2>Logs</h2></div>
+    <div id="logs"><h2>Logs</h2>
+    <div id="logsContainer"></div></div>
     <div id="lights"><h2>Lights</h2>
     <div id="lightsContainer"></div> </div>
 </div>
-
-<script src="loginForm.js"></script>
-
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-
+<script type="text/javascript" src="http://localhost:1337/js/dependencies/sails.io.js"></script>
+<script type="text/javascript">io.sails.url = "http://localhost:1337";</script>
+<script type="text/javascript" src="loginForm.js"></script>
 
 </body>
 </html>
