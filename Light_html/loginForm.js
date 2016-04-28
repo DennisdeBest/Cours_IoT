@@ -14,7 +14,6 @@ $(function() {
     io.socket.on('log', function(body){
         console.log('Log created ', body);
         getLogs();
-
     });
 
     io.socket.get('/light', function(body){
@@ -25,7 +24,6 @@ $(function() {
         getLights();
 
     });
-
 
     //Detect any change in the input fields and update the variables
     $('#email').bind('input propertychange change', function () {
@@ -83,18 +81,19 @@ $(function() {
 
     //get the lights with a get request, append to the html and add on/off button for each light
     var getLights = function () {
-        var url = 'http://localhost:1337/light?user=' + userID;
+        var url = 'http://localhost:1337/light?owner=' + userID;
         console.log(url);
-        $('#lightsContainer').html('');
         $.get(url, function (result) {
+            $('#lightsContainer').empty();
             for (var i = 0; i < result.length; i++) {
+
                 console.log(result[i]);
                 var lightID = result[i].id;
                 var state =  result[i].state;
                 state = (state) ? 'ON' : 'OFF';
                 console.log("light id : " + result[i].id);
                 $('#lightsContainer').append(
-                    "<button class='changeState' id='" + lightID + "'>"+ state +"</button>" + result[i].room +"<br/>");
+                    "<button class='changeState' id='" + lightID + "'>"+ state + "<br/>"+ result[i].room +"</button>");
 
             }
             changeState()
@@ -105,8 +104,9 @@ $(function() {
     var getLogs = function () {
         var url = 'http://localhost:1337/log?user=' + userID;
         //console.log(url);
-        $('#logsContainer').html('');
+
         $.get(url, function (result) {
+            $('#logsContainer').empty();
             for (var i = 0; i < result.length; i++) {
                 var state = result[i].state;
                 state = (state) ? 'ON' : 'OFF';
@@ -125,10 +125,7 @@ $(function() {
     var getLightName = function (light) {
         var result;
         $.each(light, function (key, value) {
-
-            //console.log("key : " + key + " value : " + value);
             if (key === 'room') {
-                //console.log("************************");
                 result = value;
             }
         });
@@ -138,10 +135,7 @@ $(function() {
     var getUserName = function (user) {
         var result;
         $.each(user, function (key, value) {
-
-            //console.log("key : " + key + " value : " + value);
             if (key === 'firstName') {
-                //console.log("************************");
                 result = value;
             }
         });
@@ -149,36 +143,23 @@ $(function() {
     };
     var changeState = function () {
         $('.changeState').on('click', function () {
-            //console.log("Change state clicked");
             var lightID = $(this).attr('id');
-            //console.log(lightID);
-            var url = 'http://localhost:1337/light?id=' + lightID;
-            //console.log(url);
+            var url = 'http://localhost:1337/light/' + lightID;
             $.get(url , function(result) {
                 var lightState = result.state;
-                var id = result.id;
-                //console.log(result);
                 lightState = (lightState) ? 'false' : 'true';
-                url = 'http://localhost:1337/light';
                 result.state = lightState;
-                //console.log(result);
-                $.ajax({
-                    url: url+"?id="+id,
-                    type: 'DELETE',
-                    success: function() {
-                        $.post(url, result, function(){
-                            getLights();
-                            });
-                        var data = {
-                            user: userID,
-                            state: lightState,
-                            light:lightID
-                        };
-                        $.post('http://localhost:1337/log',data, function(){
-                            console.log("log created")
-                        })
-                        }
-                });
+                $.post(url, result, function(){
+
+                    var data = {
+                        user: userID,
+                        state: lightState,
+                        light:lightID
+                    };
+                    $.post('http://localhost:1337/log',data, function(){
+                        console.log("new log created")
+                    })
+                    });
 
             });
         })
